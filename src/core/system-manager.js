@@ -4,8 +4,10 @@ export const SystemManager = function() {
         if(!Array.isArray(systems)) { systems = [systems]; }
         systems.forEach(system => {
             this.__collection.push(system);
+            this.onSystemAdded(system);
         });
     }
+    this.onSystemAdded = function(system) { }
 
     this.update = function(delta) { 
         this.forEach(system => { 

@@ -5,6 +5,9 @@ export const GameEngine = function(options) {
     let game = this;
     
     game.systems = new SystemManager();
+    game.systems.onSystemAdded = function(system) { 
+        system.game = game;
+    }
     if(options.systems) { game.systems.add(options.systems); }
 
     game.entities = new EntityManager();
