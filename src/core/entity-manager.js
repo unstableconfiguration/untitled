@@ -1,6 +1,4 @@
-
-export const EntityManager = function() { 
-    
+export const EntityManager = function() {     
     this.add = function(entities) { 
         if(!Array.isArray(entities)) { entities = [entities]; }
         entities.forEach(entity => {
