@@ -1,14 +1,12 @@
 
 import { GameEngine } from './core/game-engine.js';
-import { TestSystem } from './core/systems/test-system.js';
+import { systems } from './core/systems/systems.js';
 
 
 export const main = function() {
 
     new GameEngine({
-        systems : [
-            new TestSystem()
-        ],
+        systems : systems,
         entities : [
             { test : { text : 'testing', time : 500 } }
         ]
