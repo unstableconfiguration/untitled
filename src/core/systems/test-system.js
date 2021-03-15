@@ -20,20 +20,19 @@ export const TestSystem = function(game) {
                 test.time = 500;
                 if(!test.text) {
                     delete entity.test;
-                    this.entities.remove(entity);
+                    this.game.entities.onEntityChanged(entity);
                 }
             }
             else {
                 test.time -= delta;
             }
-
-    
         });
     }
 
-    const createElement = function(element) { 
+
+    const createElement = function(entity) { 
         let span = document.createElement('span');
-        span.id = element.id;
+        span.id = entity.id;
         document.body.appendChild(span);
         return span;
     }
