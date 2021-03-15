@@ -2,21 +2,30 @@ import { SystemManager } from './system-manager.js';
 import { EntityManager } from './entity-manager.js';
 
 export const GameEngine = function(options) { 
+    let game = this;
+    
+    game.systems = new SystemManager();
+    if(options.systems) { game.systems.add(options.systems); }
 
-    this.systems = new SystemManager();
-    if(options.systems) { this.systems.add(options.systems); }
+    game.entities = new EntityManager();
+    game.entities.onEntityChanged = function(entity) { 
+        game.systems.checkEntity(entity);
+    }
+    game.entities.onEntityAdded = function(entity) { 
+        game.systems.checkEntity(entity);
+    }
+    if(options.entities) { game.entities.add(options.entities); }
 
-    this.entities = new EntityManager();
-    if(options.entities) { this.entities.add(options.entities); }
     
     let fps = 60,
         timeStep = 1000/fps, 
         lastTimestamp = 0,
         delta = 0;
-    this.main = function(timestamp) { 
-
+    
+    game.main = function(timestamp) { 
+        
         if(timestamp < (lastTimestamp + timeStep)) {
-            return requestAnimationFrame(this.main);
+            return requestAnimationFrame(game.main);
         }
 
         delta += timestamp - lastTimestamp;
@@ -29,13 +38,13 @@ export const GameEngine = function(options) {
                 delta = timeStep * 12;
             }
             
-            engine.systems.update(timeStep);
+            game.systems.update(timeStep);
             delta -= timeStep
 
         }
-        requestAnimationFrame(this.main);
+        requestAnimationFrame(game.main);
     }
-    requestAnimationFrame(this.main);
+    requestAnimationFrame(game.main);
 
-    return this;
+    return game;
 }
