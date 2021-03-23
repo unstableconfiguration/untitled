@@ -8,7 +8,7 @@ export const main = function() {
     new GameEngine({
         systems : systems,
         entities : [
-            { test : { text : 'testing', time : 500 } }
+            { test : { text : 'testing!', time : 500 } }
         ]
     });
 
