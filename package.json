@@ -1,0 +1,20 @@
+{
+  "name": "untitled",
+  "version": "1.0.0",
+  "description": "Experimenting with game dev",
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unstableconfiguration/untitled.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unstableconfiguration/untitled/issues"
+  },
+  "homepage": "https://github.com/unstableconfiguration/untitled#readme"
+}
