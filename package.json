@@ -6,8 +6,9 @@
   "private": "true",
   "scripts": {
     "start": "electron ./src/electron/index.js",
-    "build": "electron-builder --config ./build/electron-builder.config.json",
-    "test": "mocha"
+    "electron-build": "electron-builder --config ./build/electron-builder.config.json",
+    "test": "mocha",
+    "build" : "npm run test && npm run electron-build"
   },
   "repository": {
     "type": "git",
