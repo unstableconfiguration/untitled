@@ -1,0 +1,9 @@
+{
+    "appId": "untitled.app",
+    "productName": "untitled",
+    "copyright": "--",
+    "win" : {
+        "target": "nsis",
+        "icon": "build/icon.512x512.png"
+    }
+}

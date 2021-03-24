@@ -2,23 +2,25 @@
   "name": "untitled",
   "version": "1.0.0",
   "description": "Experimenting with game dev",
-  "main": "index.js",
+  "main": "src/electron/index.js",
   "private": "true",
   "scripts": {
-      "start" : "electron ./src/electron/index.js"
+    "start": "electron ./src/electron/index.js",
+    "build": "electron-builder --config ./build/electron-builder.config.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/unstableconfiguration/untitled.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "oldmanmuffins",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/unstableconfiguration/untitled/issues"
   },
   "homepage": "https://github.com/unstableconfiguration/untitled#readme",
   "devDependencies": {
-    "electron": "^12.0.1"
+    "electron": "^12.0.2",
+    "electron-builder": "^22.10.5"
   }
 }
