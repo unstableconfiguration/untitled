@@ -8,7 +8,7 @@ export const main = function() {
     new GameEngine({
         systems : systems,
         entities : [
-            { test : { text : 'testing!', time : 500 } }
+            { graphics : { line : { from : { x : 10, y : 10 }, to : { x : 20, y : 20 } } } }
         ]
     });
 
