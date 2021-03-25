@@ -12,16 +12,16 @@ export const main = function() {
             //{ graphics : { text : { string : 't', color : 'red', x : 150, y : 150 } } }
             {
                 position: { x: 1, y: 1 },
-                graphics: { icon : 'T' }
+                graphics: { icon : 'test' }
             },{
                 position: { x: 2, y: 1 },
-                graphics: { icon : 'E' }
+                graphics: { icon : 'test' }
             },{
                 position: { x: 1, y: 2 },
-                graphics: { icon : 'S' }
+                graphics: { icon : 'test' }
             },{
                 position: { x: 2, y: 2 },
-                graphics: { icon : 'T' }
+                graphics: { icon : 'test' }
             },
         ]
     });

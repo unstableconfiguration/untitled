@@ -1,4 +1,5 @@
 import { System } from '../system.js';
+import { icons } from '../../assets/icons-list.js';
 
 export const GraphicsSystem = function(game) { 
     Object.assign(this, new System());
@@ -28,14 +29,17 @@ export const GraphicsSystem = function(game) {
     this.clear = function() { 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        context.fillStyle = 'rgba(0,0,0,1)';
+        context.fillStyle = 'rgba(40,40,40,1)';
         context.fillRect(0,0,window.innerWidth,window.innerHeight);
     }
 
     this.drawOnMap = function(entity) {
         let left = entity.position.x * font.width - font.width;
         let top = entity.position.y * font.height;
-        this.drawText(left, top, entity.graphics.icon);
+        let icon = icons[entity.graphics.icon];
+        if(icon.char) {
+            this.drawText(left, top, icon.char, icon.color);
+        }
     }
 
     this.drawLine = function(entity) { 
@@ -48,8 +52,8 @@ export const GraphicsSystem = function(game) {
     }
 
     this.drawText = function(canvasX, canvasY, string, color) { 
-        context.font = font.size + ' ' + font.family; 
-        context.fillStyle = 'white';
+        context.font = 'bold ' + font.size + ' ' + font.family; 
+        context.fillStyle = color || 'white';
         context.fillText(string, canvasX, canvasY); 
     }
 
