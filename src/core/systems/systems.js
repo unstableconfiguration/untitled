@@ -1,5 +1,5 @@
-import { TestSystem } from './test-system.js';
+import { GraphicsSystem } from './graphics-system.js';
 
 export const systems = [
-    new TestSystem()
+    new GraphicsSystem()
 ]
