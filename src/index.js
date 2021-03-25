@@ -8,7 +8,21 @@ export const main = function() {
     new GameEngine({
         systems : systems,
         entities : [
-            { graphics : { line : { from : { x : 10, y : 10 }, to : { x : 100, y : 100 } } } }
+            //{ graphics : { line : { from : { x : 10, y : 10 }, to : { x : 100, y : 100 } } } },
+            //{ graphics : { text : { string : 't', color : 'red', x : 150, y : 150 } } }
+            {
+                position: { x: 1, y: 1 },
+                graphics: { icon : 'T' }
+            },{
+                position: { x: 2, y: 1 },
+                graphics: { icon : 'E' }
+            },{
+                position: { x: 1, y: 2 },
+                graphics: { icon : 'S' }
+            },{
+                position: { x: 2, y: 2 },
+                graphics: { icon : 'T' }
+            },
         ]
     });
 
