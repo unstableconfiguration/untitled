@@ -4,7 +4,8 @@ import { icons } from '../../assets/icons-list.js';
 export const GraphicsSystem = function(game) { 
     Object.assign(this, new System());
     let canvas = document.getElementById('canvas');
-    let context = canvas.getContext('2d');
+    let context = canvas.getContext('2d', { alpha : false });
+        
     /* font family and size can be configurable in the future if desired */
     let font = {
         family : 'Courier New, Courier, monospace',
@@ -12,7 +13,7 @@ export const GraphicsSystem = function(game) {
         width : 13, // adjusting these to get more square-like
         height : 15 //
     }
-
+    
     this.isEntityValid = function(entity) {
         if(entity.graphics) { return true; }
         return false; 
@@ -34,28 +35,24 @@ export const GraphicsSystem = function(game) {
     }
 
     this.drawOnMap = function(entity) {
-        let left = entity.position.x * font.width - font.width;
+        let left = entity.position.x * font.width;
         let top = entity.position.y * font.height;
         let icon = icons[entity.graphics.icon];
-        if(icon.char) {
-            this.drawText(left, top, icon.char, icon.color);
+        if(!icon.imageData) { 
+            icon.imageData = this.getImageData(icon);
         }
+        context.putImageData(icon.imageData, left, top)
     }
 
-    this.drawLine = function(entity) { 
-        let line = entity.graphics.line;
-        context.beginPath();
-        context.moveTo(line.from.x, line.from.y);
-        context.lineTo(line.to.x, line.to.y);
-        context.strokeStyle = line.color || 'white';
-        context.stroke();
+    this.getImageData = function(icon) { 
+        context.font = 'bold 20px Courier New, Courier, monospace';
+        context.fillStyle = icon.color || 'white';
+        let width = context.measureText(icon.char).width;
+        console.log(width)
+        context.fillText(icon.char, 0, width + 2);
+        return context.getImageData(0, 0, width, width + 2);
     }
 
-    this.drawText = function(canvasX, canvasY, string, color) { 
-        context.font = 'bold ' + font.size + ' ' + font.family; 
-        context.fillStyle = color || 'white';
-        context.fillText(string, canvasX, canvasY); 
-    }
 
     return this;
 
