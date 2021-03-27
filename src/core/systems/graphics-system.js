@@ -45,10 +45,10 @@ export const GraphicsSystem = function(game) {
     }
 
     this.getImageData = function(icon) { 
+        this.clear();
         context.font = 'bold 20px Courier New, Courier, monospace';
         context.fillStyle = icon.color || 'white';
         let width = context.measureText(icon.char).width;
-        console.log(width)
         context.fillText(icon.char, 0, width + 2);
         return context.getImageData(0, 0, width, width + 2);
     }
